@@ -108,12 +108,15 @@ public class Parser extends DefaultHandler {
 
     public class ModuleScanner extends DefaultHandler {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-            if(localName.equals("output")) {
+            if(localName.equals("output") || localName.equals("output-test") || localName.equals("sourceFolder")) {
                 String url = attributes.getValue("url");
                 if(url==null)
                     throw new IllegalStateException("@url missing in <output>");
 
-                outputs.add(parseUrl(url));
+                if(localName.equals("sourceFolder"))
+                    outputs.add(0,parseUrl(url));
+                else
+                    outputs.add(parseUrl(url));
             }
         }
     }
