@@ -30,7 +30,7 @@ public class Main {
             createParser().parse(module,p);
         }
 
-        System.out.println(buildClasspath(p).getResult());
+        System.out.print(buildClasspath(p).getResult());
 
         System.exit(0);
     }
