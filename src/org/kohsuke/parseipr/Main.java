@@ -21,7 +21,7 @@ public class Main {
         else
             projectFile = parseArgument(args[0]);
 
-        projectFile = projectFile.getAbsoluteFile();
+        projectFile = projectFile.getCanonicalFile();
 
         Parser p = parse(projectFile);
         for (int i = 0; i < p.modules.size(); i++) {
