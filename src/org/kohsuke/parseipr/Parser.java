@@ -75,8 +75,10 @@ public class Parser extends DefaultHandler {
             f = new File(filepath);
         }
 
-        if(!f.exists())
-            throw new IllegalArgumentException("non-existent file "+f);
+        if(!f.exists()) {
+            System.err.println("Warning: non-existent file "+f);
+            return null;
+        }
         return f;
     }
 
@@ -113,10 +115,14 @@ public class Parser extends DefaultHandler {
                 if(url==null)
                     throw new IllegalStateException("@url missing in <output>");
 
-                if(localName.equals("sourceFolder"))
-                    outputs.add(0,parseUrl(url));
-                else
-                    outputs.add(parseUrl(url));
+                File path = parseUrl(url);
+
+                if(path!=null) {
+                    if(localName.equals("sourceFolder"))
+                        outputs.add(0,path);
+                    else
+                        outputs.add(path);
+                }
             }
         }
     }
@@ -153,7 +159,9 @@ public class Parser extends DefaultHandler {
                 String url = attributes.getValue("url");
                 if(url==null)
                     throw new IllegalStateException("@url missing in <ROOT>");
-                paths.add(parseUrl(url));
+                File path = parseUrl(url);
+                if(path!=null)
+                    paths.add(path);
             }
         }
 
