@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<project name="parse-ipr" default="jar">
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src" destdir="build/classes" debug="on" />
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="build/parse-dot-classpath.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.kohsuke.parseipr.Main"/>
+			</manifest>
+			<fileset dir="build/classes"/>
+			<fileset dir="." includes="LICENSE.txt"/>
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+</project>
