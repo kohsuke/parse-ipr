@@ -6,7 +6,7 @@
 	</target>
 	
 	<target name="jar" depends="compile">
-		<jar destfile="build/parse-dot-classpath.jar">
+		<jar destfile="build/parse-ipr.jar">
 			<manifest>
 				<attribute name="Main-Class" value="org.kohsuke.parseipr.Main"/>
 			</manifest>
