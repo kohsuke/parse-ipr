@@ -104,7 +104,8 @@ public class Parser extends DefaultHandler {
                 return;
 
             File module = parseFile(filepath);
-            modules.add(module);
+            if(module!=null)
+                modules.add(module);
         }
     }
 
