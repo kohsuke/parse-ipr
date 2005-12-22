@@ -8,14 +8,14 @@ import java.io.File;
  * @author
  *      Kohsuke Kawaguchi (kk@kohsuke.org)
  */
-public final class ClasspathBuilder {
+public class ClasspathBuilder {
     /**
      * Path separator.
      * The default value is platform-dependent.
      */
     private String separator = File.pathSeparator;
     
-    private final StringBuffer buf = new StringBuffer();
+    protected final StringBuffer buf = new StringBuffer();
     
     /**
      * Overrides the platform-default separator string.

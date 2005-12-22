@@ -1,0 +1,27 @@
+package org.kohsuke.parseipr;
+
+import java.io.File;
+
+/**
+ * {@link ClasspathBuilder} for cygwin.
+ *
+ * @author Kohsuke Kawaguchi
+ */
+public class CygwinClasspathBuilder extends ClasspathBuilder {
+    public CygwinClasspathBuilder() {
+        setSeparator(":");
+    }
+
+    public void add(File f) {
+        if( buf.length()!=0 )
+            buf.append(":");
+
+        String path = f.getAbsolutePath();
+        path = path.replace('\\','/');
+
+        if(path.substring(1).startsWith(":/"))
+            path = "/cygdrive/"+path.charAt(0)+path.substring(2);
+
+        buf.append(path);
+    }
+}
