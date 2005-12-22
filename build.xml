@@ -9,6 +9,7 @@
 		<jar destfile="build/parse-ipr.jar">
 			<manifest>
 				<attribute name="Main-Class" value="org.kohsuke.parseipr.Main"/>
+				<attribute name="Version"    value="1.0.1" />
 			</manifest>
 			<fileset dir="build/classes"/>
 			<fileset dir="." includes="LICENSE.txt"/>
