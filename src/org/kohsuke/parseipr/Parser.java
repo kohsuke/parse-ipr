@@ -66,8 +66,14 @@ public class Parser extends DefaultHandler {
      */
     private File parseFile(String filepath) {
         File f;
+        if(filepath.equals("$PROJECT_DIR$")) {
+            f = projectDir;
+        } else
         if(filepath.startsWith("$PROJECT_DIR$/")) {
             f = new File(projectDir,filepath.substring("$PROJECT_DIR$/".length()));
+        } else
+        if(filepath.equals("$MODULE_DIR$")) {
+            f = moduleDir;
         } else
         if(filepath.startsWith("$MODULE_DIR$/")) {
             f = new File(moduleDir,filepath.substring("$MODULE_DIR$/".length()));
