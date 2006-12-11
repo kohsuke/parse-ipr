@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Kohsuke Kawaguchi (kk@kohsuke.org)
@@ -17,7 +18,7 @@ public class Library {
         this.paths = Collections.unmodifiableList(paths);
     }
 
-    public void addTo(ClasspathBuilder builder) {
+    public void addTo(ClasspathBuilder builder) throws IOException {
         for (int i = 0; i < paths.size(); i++) {
             File jar = (File)paths.get(i);
             builder.add(jar);

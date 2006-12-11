@@ -1,6 +1,7 @@
 package org.kohsuke.parseipr;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * {@link ClasspathBuilder} for cygwin.
@@ -12,7 +13,11 @@ public class CygwinClasspathBuilder extends ClasspathBuilder {
         setSeparator(":");
     }
 
-    public void add(File f) {
+    public void add(File f) throws IOException {
+        f = f.getCanonicalFile();
+        if(!files.add(f))
+            return; // already added
+        
         if( buf.length()!=0 )
             buf.append(":");
 

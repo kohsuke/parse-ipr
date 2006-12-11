@@ -122,7 +122,7 @@ public class Main {
         );
     }
 
-    private static void buildClasspath(ClasspathBuilder builder, Parser p) {
+    private static void buildClasspath(ClasspathBuilder builder, Parser p) throws IOException {
         // add output dirs
         for (int i = 0; i < p.outputs.size(); i++) {
             File output = (File) p.outputs.get(i);

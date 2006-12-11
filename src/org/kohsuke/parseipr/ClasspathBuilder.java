@@ -1,6 +1,7 @@
 package org.kohsuke.parseipr;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -22,7 +23,7 @@ public class ClasspathBuilder {
     /**
      * Used for checking duplicates.
      */
-    private final Set files = new HashSet();
+    protected final Set files = new HashSet();
 
     /**
      * Overrides the platform-default separator string.
@@ -38,7 +39,8 @@ public class ClasspathBuilder {
     /**
      * Adds a new entry
      */
-    public void add( File f ) {
+    public void add( File f ) throws IOException {
+        f = f.getCanonicalFile();
         if(!files.add(f))
             return; // already added
 
