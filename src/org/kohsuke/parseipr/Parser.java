@@ -77,6 +77,11 @@ public class Parser extends DefaultHandler {
         } else
         if(filepath.startsWith("$MODULE_DIR$/")) {
             f = new File(moduleDir,filepath.substring("$MODULE_DIR$/".length()));
+        } else
+        if(filepath.startsWith("$M2_REPO$/")) {
+            f = new File(
+                new File(new File(System.getProperty("user.home")),".m2/repository"),
+                filepath.substring("$M2_REPO$/".length()));
         } else {
             f = new File(filepath);
         }
