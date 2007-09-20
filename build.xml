@@ -2,7 +2,7 @@
 <project name="parse-ipr" default="jar">
 	<target name="compile">
 		<mkdir dir="build/classes"/>
-		<javac srcdir="src" destdir="build/classes" debug="on" />
+		<javac srcdir="src" destdir="build/classes" debug="on" source="1.4" target="1.4" />
 	</target>
 	
 	<target name="jar" depends="compile">
