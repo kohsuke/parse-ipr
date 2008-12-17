@@ -82,6 +82,11 @@ public class Parser extends DefaultHandler {
             f = new File(
                 new File(new File(System.getProperty("user.home")),".m2/repository"),
                 filepath.substring("$M2_REPO$/".length()));
+        } else
+        if(filepath.startsWith("$MAVEN_REPOSITORY$/")) {
+            f = new File(
+                new File(new File(System.getProperty("user.home")),".m2/repository"),
+                filepath.substring("$MAVEN_REPOSITORY$/".length()));
         } else {
             f = new File(filepath);
         }
